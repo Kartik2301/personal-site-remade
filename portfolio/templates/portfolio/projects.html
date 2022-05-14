@@ -1,0 +1,37 @@
+{% extends "portfolio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <br>
+  <h2 class="mt-2">Projects</h2>
+  <hr>
+  <div class="container-fluid">
+    <div class="row">
+      {% for project in projects %}
+      <div class="col-lg-4 col-md-6">
+
+        {% if project.url %}
+        <a href="{{ project.url }}">
+          <div align="center">
+            <img src="{{ project.image.url }}" class="img-fluid mb-2" width="200">
+          </div>
+        </a>
+        {% else %}
+        <div align="center">
+          <img src="{{ project.image.url }}" class="img-fluid mb-2" width="300">
+       </div>
+
+        {% endif %}
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
